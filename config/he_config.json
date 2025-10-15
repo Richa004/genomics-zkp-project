@@ -1,0 +1,35 @@
+{
+  "scheme": "BFV",
+  "key_size": 2048,
+  "poly_modulus_degree": 4096,
+  "coeff_modulus": [60, 40, 40, 60],
+  "plain_modulus": 786433,
+  "encryption_params": {
+    "batching": true,
+    "auto_relinearize": true
+  },
+  "roles": {
+    "data_owner": {
+      "generate_keys": true,
+      "public_key_file": "keys/data_owner_pub.key",
+      "secret_key_file": "keys/data_owner_sec.key",
+      "relin_key_file": "keys/data_owner_relin.key"
+    },
+    "data_user": {
+      "generate_keys": false,
+      "public_key_file": "keys/data_owner_pub.key"
+    }
+  },
+  "operations_supported": [
+    "add",
+    "sub",
+    "mul",
+    "dot_product",
+    "sum",
+    "allele_count"
+  ],
+  "storage": {
+    "encrypted_data_dir": "data/compressed/encrypted",
+    "temp_compute_dir": "data/compressed/temp_compute"
+  }
+}

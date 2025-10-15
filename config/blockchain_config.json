@@ -1,0 +1,53 @@
+{
+  "chain_name": "genomic_chain",
+  "chain_description": "Private blockchain for secure genomic data storage with ZKP and HE",
+  "rpc": {
+    "rpcuser": "multichainuser",
+    "rpcpassword": "multichainpass",
+    "rpcport":  6820,
+    "rpchost": "127.0.0.1"
+  },
+  "network": {
+    "port":  8570,
+    "address": "127.0.0.1",
+    "max_connections": 10,
+    "default_permissions": "connect,send,receive"
+  },
+  "streams": [
+    {
+      "name": "VCFchain",
+      "description": "Stores compressed and encrypted VCF variant data",
+      "open": false,
+      "permissions": ["read", "write", "admin"]
+    },
+    {
+      "name": "SAMchain",
+      "description": "Stores compressed and encrypted SAM alignment data",
+      "open": false,
+      "permissions": ["read", "write", "admin"]
+    },
+    {
+      "name": "AccessLogs",
+      "description": "Logs all access transactions and permission changes",
+      "open": false,
+      "permissions": ["read", "write"]
+    },
+    {
+      "name": "ZKPproofs",
+      "description": "Stores hashes or references of Zero-Knowledge Proofs for validation",
+      "open": false,
+      "permissions": ["read", "write"]
+    }
+  ],
+  "permissions": {
+    "admin": ["grant", "revoke", "activate", "issue"],
+    "researcher": ["read", "write"],
+    "data_owner": ["read", "write", "grant"]
+  },
+  "blockchain_params": {
+    "mining": false,
+    "target_block_time": 15,
+    "max_block_size": 1000000,
+    "transaction_fee": 0
+  }
+}
